@@ -16,55 +16,6 @@ A tiny DNS change is all it takes. You’ll point your domain to Eleva so we can
 
 ---
 
-## Step-by-step (zero jargon)
-
-### 1) Get approval from Eleva (required)
-
-* Reply to your onboarding email or message your Eleva contact with your domain (e.g., `example.com`).
-* Wait for our **“All set—go ahead”** confirmation.
-
-### 2) Log in to your domain provider
-
-* This is where you bought or manage the domain (GoDaddy, Cloudflare, Namecheap, Squarespace, Wix, etc.).
-
-### 3) Open your DNS / Zone settings
-
-* Look for **DNS**, **Manage DNS**, **Zone Editor**, or **Advanced DNS**.
-
-### 4) Locate the host you’ll point
-
-* For your main site, this is usually the **root host** shown as **`@`** (sometimes the provider displays your full domain name).
-* You may also have a **`www`** record. Leave it as is **unless Eleva instructs otherwise**.
-
-### 5) Apply the correct record rule (A *or* CNAME, not both)
-
-For a **given host (e.g., `@` or `www`)**, DNS should have **only one** of these:
-
-* **Either** a single **A** record,
-* **Or** a single **CNAME** record.
-  You **cannot** have a CNAME for a name that also has other records (A/MX/TXT/etc.).
-
-**For Eleva (default path = A record on `@`):**
-
-* **Remove** any **CNAME** that exists for the same host.
-* Keep **only one A record** for that host.
-* Set **Value / Points to** = **`98.89.186.43`**.
-* **Save**.
-
-> If Eleva specifically instructs you to use **CNAME** for a host, first **remove all A records** for that host, then keep **only one CNAME** (we’ll provide the target).
-
-### 6) (Optional) Set a short TTL
-
-* If you see **TTL**, leaving default is fine.
-* For faster propagation or easy rollback, choose **300 seconds (5 minutes)**.
-
-### 7) Tell Eleva it’s done
-
-* Send a quick “done” message (or click **Verify** in your onboarding link, if provided).
-* We’ll confirm the connection and start **baseline tracking** for the first 1–2 days (observe only).
-
----
-
 ## Friendly reminders (best practices)
 
 * **Friendly reminder:** Before pointing your A record to Eleva, **save your current A record** (screenshot + copy the IP). If you ever need to roll back, it’s a one-minute fix.
