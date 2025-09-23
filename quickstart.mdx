@@ -1,7 +1,6 @@
-# Activate Eleva AMS (non-technical)
+# Activate Eleva AMS
 
 A tiny DNS change is all it takes. You’ll point your domain to Eleva so we can add tracking and gentle auto-optimization—**no code changes** and your website stays exactly the same.
-
 
 <Note>
   **Important:** Do not change DNS until the Eleva Team confirms your domain is enabled. Without our approval, Eleva won’t work on your website.
@@ -21,35 +20,23 @@ A tiny DNS change is all it takes. You’ll point your domain to Eleva so we can
 
 ## Friendly reminders (best practices)
 
-* **Friendly reminder:** Before pointing your A record to Eleva, **save your current A record** (screenshot + copy the IP). If you ever need to roll back, it’s a one-minute fix.
-* **Only one per host:** For the same host (`@` or `www`), choose **A or CNAME—never both**.
-* **Replace, don’t stack:** **Remove what exists** for that host, then **add ours**. For the default setup, that means **one A record** pointing to **`98.89.186.43`**.
-* **Don’t touch email:** Leave **MX** (and **TXT** like SPF/DKIM/DMARC) alone—those control email, not website routing.
-* **Low-traffic window:** If possible, make changes during quieter hours.
-* **Keep DNS open:** Leave the DNS tab open until Eleva confirms everything looks good.
-
----
-
-## What happens next 
-
-* **Days 1-30 — Baseline:** We just measure how bots already interact with your content. No changes to your site content.
-* **Days 30-60 — Gentle auto-tuning:** We gradually enable safe optimizations and compare against your baseline.
-* **Ongoing — Autopilot:** Continuous improvements as we gather more AI Bot history.
+- **Friendly reminder:** Before pointing your A record to Eleva, **save your current A record** (screenshot + copy the IP). If you ever need to roll back, it’s a one-minute fix.
+- **Only one per host:** For the same host (`@` or `www`), choose **A or CNAME—never both**.
+- **Replace, don’t stack:** **Remove what exists** for that host, then **add ours**. For the default setup, that means **one A record** pointing to **`98.89.186.43`**.
+- **Keep DNS open:** Leave the DNS tab open until Eleva confirms everything looks good.
 
 ---
 
 ## Rollback (if you ever need it)
 
-* Edit the **A record for `@`** back to the IP you saved, then **Save**.
-* With TTL at **300s**, propagation often completes in minutes.
-* Tell Eleva so we can help diagnose and re-enable when you’re ready.
+- Edit the **`A record for @`** back to the IP you saved, then **Save**.
+- With TTL at **300s**, propagation often completes in minutes.
+- Tell Eleva so we can help diagnose and re-enable when you’re ready.
 
 ---
 
 ## `www` handling
 
-* Most providers set **`www`** as a **CNAME** to your root domain. That’s fine—leave it.
-* If your **`www`** is an **A** record and you’re unsure, ask Eleva before changing it.
-* Remember: **A or CNAME per host, not both**.
-
-
+- Most providers set **`www`** as a **CNAME** to your root domain. That’s fine—leave it.
+- If your **`www`** is an **A** record and you’re unsure, ask Eleva before changing it.
+- Remember: **A or CNAME per host, not both**.
