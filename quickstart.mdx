@@ -9,7 +9,7 @@ A tiny DNS change is all it takes. You’ll point your domain to Eleva so we can
 
 ---
 
-## What you’ll do (at a glance)
+## Step-by-step
 
 1. Get Eleva’s approval for your domain.
 2. Log in where your domain’s **DNS** is managed (GoDaddy, Wix, Namecheap, etc.).
@@ -30,7 +30,7 @@ A tiny DNS change is all it takes. You’ll point your domain to Eleva so we can
 
 ---
 
-## What happens next (calm & predictable)
+## What happens next 
 
 * **Days 1-30 — Baseline:** We just measure how bots already interact with your content. No changes to your site content.
 * **Days 30-60 — Gentle auto-tuning:** We gradually enable safe optimizations and compare against your baseline.
@@ -46,23 +46,10 @@ A tiny DNS change is all it takes. You’ll point your domain to Eleva so we can
 
 ---
 
-## `www` handling (common setups)
+## `www` handling
 
 * Most providers set **`www`** as a **CNAME** to your root domain. That’s fine—leave it.
 * If your **`www`** is an **A** record and you’re unsure, ask Eleva before changing it.
 * Remember: **A or CNAME per host, not both**.
-
----
-
-## Quick FAQ
-
-**Will this break my email?**
-No. Email uses **MX** and related **TXT** records, which you aren’t changing.
-
-**What if my provider forces `proxied`/`orange cloud` (e.g., Cloudflare)?**
-Follow Eleva’s instruction—some setups require **DNS-only** (no proxy). We’ll specify which mode.
-
-**I don’t see an A record for `@`. What now?**
-Some builders manage DNS behind the scenes. Tell us your provider; we’ll send a 30-second path or a provider-specific guide.
 
 
