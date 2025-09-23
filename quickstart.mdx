@@ -1,44 +1,127 @@
-# Enabling Eleva AMS
-Flip one DNS switch. Eleva does the magic.
-Your site stays the same. Eleva just adds the AI superpowers on top.
+# Activate Eleva AMS (non-technical)
 
-> **Important:** First get written approval from the **Eleva Team** for your domain. Without that approval, the Eleva AMS won’t work.
+A tiny DNS change is all it takes. You’ll point your domain to Eleva so we can add tracking and gentle auto-optimization—**no code changes** and your website stays exactly the same.
 
-<Info>
-  **Friendly Reminder**:
+> **Important:** **Do not change DNS until the Eleva Team confirms your domain is enabled.** Without our approval, the connection won’t work.
 
-  Before pointing your A record to Eleva, save your current A record. If you ever need to roll back, it’s a one-minute fix.
-</Info>
+---
 
-## What you’ll do (high-level)
+## What you’ll do (at a glance)
 
-1. Sign in where your domain is managed (GoDaddy, Registro.br, Cloudflare, etc.).
-2. Open your **DNS / Zone** settings.
-3. Find your existing **A record** for the root of your domain (often shown as `@`).
+1. Get Eleva’s go-ahead for your domain.
+2. Log in where your domain’s **DNS** is managed (GoDaddy, Cloudflare, Registro.br, etc.).
+3. Find your **A record** for the root (host **@**).
 4. Replace its IP with **`98.89.186.43`** and save.
-5. Tell Eleva Team you’ve updated it so we can verify and turn things on.
+5. Tell Eleva so we can verify and start baseline tracking.
+
+---
+
+## Step-by-step (zero jargon)
+
+### 1) Get approval from Eleva (required)
+
+* Reply to your onboarding email or message your Eleva contact with your domain (e.g., `example.com`).
+* Wait for our **“All set—go ahead”** confirmation.
+
+### 2) Log in to your domain provider
+
+* This is where you bought or manage the domain (GoDaddy, Cloudflare, Namecheap, Registro.br, Squarespace, Wix, etc.).
+
+### 3) Open your DNS / Zone settings
+
+* Look for **DNS**, **Manage DNS**, **Zone Editor**, or **Advanced DNS**.
+
+### 4) Locate the host you’ll point
+
+* For your main site, this is usually the **root host** shown as **`@`** (sometimes the provider displays your full domain name).
+* You may also have a **`www`** record. Leave it as is **unless Eleva instructs otherwise**.
+
+### 5) Apply the correct record rule (A *or* CNAME, not both)
+
+For a **given host (e.g., `@` or `www`)**, DNS should have **only one** of these:
+
+* **Either** a single **A** record,
+* **Or** a single **CNAME** record.
+  You **cannot** have a CNAME for a name that also has other records (A/MX/TXT/etc.).
+
+**For Eleva (default path = A record on `@`):**
+
+* **Remove** any **CNAME** that exists for the same host.
+* Keep **only one A record** for that host.
+* Set **Value / Points to** = **`98.89.186.43`**.
+* **Save**.
+
+> If Eleva specifically instructs you to use **CNAME** for a host, first **remove all A records** for that host, then keep **only one CNAME** (we’ll provide the target).
+
+### 6) (Optional) Set a short TTL
+
+* If you see **TTL**, leaving default is fine.
+* For faster propagation or easy rollback, choose **300 seconds (5 minutes)**.
+
+### 7) Tell Eleva it’s done
+
+* Send a quick “done” message (or click **Verify** in your onboarding link, if provided).
+* We’ll confirm the connection and start **baseline tracking** for the first 1–2 days (observe only).
+
+---
+
+## Friendly reminders (best practices)
+
+* **Friendly reminder:** Before pointing your A record to Eleva, **save your current A record** (screenshot + copy the IP). If you ever need to roll back, it’s a one-minute fix.
+* **Only one per host:** For the same host (`@` or `www`), choose **A or CNAME—never both**.
+* **Replace, don’t stack:** **Remove what exists** for that host, then **add ours**. For the default setup, that means **one A record** pointing to **`98.89.186.43`**.
+* **Don’t touch email:** Leave **MX** (and **TXT** like SPF/DKIM/DMARC) alone—those control email, not website routing.
+* **Low-traffic window:** If possible, make changes during quieter hours.
+* **Keep DNS open:** Leave the DNS tab open until Eleva confirms everything looks good.
+
+---
+
+## What happens next (calm & predictable)
+
+* **Days 1–2 — Baseline:** We just measure how bots already interact with your content. No changes to your site content.
+* **Days 3–14 — Gentle auto-tuning:** We gradually enable safe optimizations and compare against your baseline.
+* **Ongoing — Autopilot:** Continuous improvements as we gather more history. You can pause or target pages anytime.
+
+---
+
+## Rollback (if you ever need it)
+
+* Edit the **A record for `@`** back to the IP you saved, then **Save**.
+* With TTL at **300s**, propagation often completes in minutes.
+* Tell Eleva so we can help diagnose and re-enable when you’re ready.
+
+---
+
+## `www` handling (common setups)
+
+* Most providers set **`www`** as a **CNAME** to your root domain. That’s fine—leave it.
+* If your **`www`** is an **A** record and you’re unsure, ask Eleva before changing it.
+* Remember: **A or CNAME per host, not both**.
+
+---
+
+## Quick FAQ
+
+**Will this break my email?**
+No. Email uses **MX** and related **TXT** records, which you aren’t changing.
+
+**Can I activate on a subdomain instead?**
+Yes (e.g., `app.example.com` or `ai.example.com`). We’ll tell you whether to add an **A** or **CNAME** and the exact value.
+
+**What if my provider forces `proxied`/`orange cloud` (e.g., Cloudflare)?**
+Follow Eleva’s instruction—some setups require **DNS-only** (no proxy). We’ll specify which mode.
+
+**I don’t see an A record for `@`. What now?**
+Some builders manage DNS behind the scenes. Tell us your provider; we’ll send a 30-second path or a provider-specific guide.
+
+---
+
+## Compliance note
+
+> **Do not point DNS without Eleva’s explicit approval.**
+> If you change DNS before we enable your domain on our side, traffic will not route correctly.
 
 
-
-Follow these steps to install and run Eleva AMS on your website.
-
-<Steps>
-  <Step title="Install the Eleva AMS">
-    ```bash
-    npm i -g mint
-    ```
-  </Step>
-
-  <Step title="Preview locally">
-    Navigate to your docs directory where your `docs.json` file is located, and run the following command:
-
-    ```bash
-    mint dev
-    ```
-
-    A local preview of your documentation will be available at `http://localhost:3000`.
-  </Step>
-</Steps>
 
 
 ## Next steps
