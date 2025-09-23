@@ -1,4 +1,17 @@
 # Enabling Eleva AMS
+Flip one DNS switch. Eleva does the magic.
+Your site stays the same. Eleva just adds the AI superpowers on top.
+
+> **Important:** **Don’t point DNS yet.** First get written approval from the **Eleva Team** for your domain. Without that approval, the connection won’t work.
+
+## What you’ll do (high-level)
+
+1. Sign in where your domain is managed (GoDaddy, Registro.br, Cloudflare, etc.).
+2. Open your **DNS / Zone** settings.
+3. Find your existing **A record** for the root of your domain (often shown as `@`).
+4. Replace its IP with **`98.89.186.43`** and save.
+5. Tell Eleva you’ve updated it so we can verify and turn things on.
+
 
 > Preview changes locally to update your docs
 
@@ -9,10 +22,10 @@
   * A docs repository with a `docs.json` file
 </Info>
 
-Follow these steps to install and run Mintlify on your operating system.
+Follow these steps to install and run Eleva AMS on your website.
 
 <Steps>
-  <Step title="Install the Mintlify CLI">
+  <Step title="Install the Eleva AMS">
     ```bash
     npm i -g mint
     ```
