@@ -4,7 +4,7 @@
   "name": "Eleva Starter Kit",
   "colors": {
     "primary": "#A7E858",
-    "light": "#122423",
+    "light": "#A7E858",
     "dark": "#A7E858"
   },
   "favicon": "/favicon.svg",
